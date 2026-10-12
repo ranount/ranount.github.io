@@ -1,0 +1,144 @@
+/* Узкие экраны: планшет (≤ 1340) и телефон (≤ 760, макеты 7a–7d). Точная подгонка телефона — mobile.css
+   Строителя 2 (грузится после этого файла). Общие правила телефона: шапка 56 px, иконки 44×44, поля 16 px,
+   карточки во всю ширину, кнопки 48 px, без горизонтальной прокрутки страницы. */
+@media screen and (max-width:1340px){
+  :root{--pad-x:32px;}
+  .wrap,.doc-band__in,.doc-grid,.stg-band__in,.stg-wrap{padding-left:32px;padding-right:32px;}
+}
+@media screen and (max-width:1180px){
+  .pt-grid{grid-template-columns:220px minmax(0,1fr);}
+  .pt-aside{grid-column:2;padding-top:0;}
+  .doc-grid{grid-template-columns:240px minmax(0,1fr);}
+  .doc-aside{grid-column:2;}
+  .home-entries{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .cat-tiles{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .cat-cols,.cat-row{grid-template-columns:140px minmax(0,1fr) 150px 200px;}
+  .cat-cols div:last-child,.cat-row>span:last-child{display:none;}
+  .hdr{gap:24px;}
+  .hdr-nav{gap:18px;font-size:14px;}
+  .chg-grid{grid-template-columns:minmax(0,1fr) 320px;}
+  .stg-minis,.frm-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .passport{grid-template-columns:150px minmax(0,1fr) 160px 120px 150px;}
+}
+@media screen and (max-width:960px){
+  .hdr-search{display:none;}
+  .chg-grid{grid-template-columns:1fr;}
+  .home-fresh__grid,.home-band{grid-template-columns:1fr;}
+}
+@media screen and (max-width:760px){
+  :root{--pad-x:16px;}
+  body{font-size:15px;}
+  .d-only{display:none !important;}
+  .m-only{display:block !important;}
+  .hdr-m.m-only{display:flex !important;}
+  .hdr-m{height:57px;background:#FFFFFF;border-bottom:1px solid var(--c-line);align-items:center;gap:12px;padding:0 16px;position:sticky;top:0;z-index:40;}
+  .hdr-m .hdr-logo{flex:1;}
+  .hdr-m .hdr-logo img{width:26px;height:26px;}
+  .hdr-m .hdr-logo__t{font-size:16px;}
+  .hdr-m__back{font-size:15px;font-weight:600;color:var(--c-accent);flex:none;max-width:60vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .hdr-m__sp{flex:1;}
+  .ftr{margin-top:40px;padding:20px 16px 28px;flex-direction:column;align-items:flex-start;gap:12px;font-size:13px;line-height:1.5;}
+  .ftr__links{gap:18px;}
+  .wrap,.wrap--960,.wrap--880,.doc-band__in,.doc-grid,.stg-band__in,.stg-wrap{padding:16px 16px 0;max-width:none;}
+  .wrap{gap:20px;}
+  .page-h1{font-size:30px;line-height:1.12;}
+  .page-head{flex-direction:column;align-items:flex-start;}
+  .crumbs{font-size:13px;}
+  /* главная 7a */
+  .home-hero{margin:0;border-radius:0;padding:24px 16px 8px;align-items:stretch;gap:16px;background:var(--c-bg);}
+  .home-hero h1{font-size:30px;line-height:1.12;letter-spacing:-0.02em;text-align:left;}
+  .home-hero__lead{font-size:15px;color:var(--c-ink-2);text-align:left;}
+  .search-big{height:52px;margin-top:0;border-radius:10px;box-shadow:none;border:1px solid var(--c-line-ctl);padding:0 6px 0 14px;gap:10px;}
+  .search-big input{font-size:15px;}
+  .search-big button{height:40px;padding:0 14px;font-size:14px;}
+  .home-mchips.m-only{display:flex !important;gap:8px;flex-wrap:wrap;}
+  .home-mchips .chip{height:36px;padding:0 12px;border-radius:8px;box-shadow:var(--sh-ring);font-size:14px;}
+  .home-msections.m-only{display:flex !important;flex-direction:column;background:#FFFFFF;border-radius:var(--r-card);margin:16px 16px 0;}
+  .home-msections a{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px;border-bottom:1px solid var(--c-line);text-decoration:none;}
+  .home-msections a:last-child{border-bottom:0;}
+  .home-msections a>span{display:flex;flex-direction:column;}
+  .home-msections b{font-size:16px;color:var(--c-title);}
+  .home-msections a>span>span{font-size:13px;color:var(--c-ink-2);}
+  .home-msections i{font-style:normal;color:var(--c-ink-3);font-size:18px;}
+  .home-mfeed.m-only{display:flex !important;flex-direction:column;gap:10px;margin:24px 16px 0;}
+  .home-mcard{background:#FFFFFF;border-radius:var(--r-card);padding:14px 16px;display:flex;flex-direction:column;gap:6px;text-decoration:none;}
+  .home-mcard b{font-size:16px;color:var(--c-title);}
+  .home-mcard__x{font-size:14px;line-height:1.45;color:var(--c-ink);}
+  body.pg-home{background:var(--c-bg);}
+  /* пункт 7b */
+  .pt-grid{display:flex;flex-direction:column;padding:16px 16px 0;gap:16px;}
+  .pt-grid>*,.pt-card,.pt-body,.pt-text,.pt-text>*,.doc-grid>*,.du__b>*{min-width:0;max-width:100%;}
+  .pt-aside{display:none;}
+  .pt-main{gap:16px;}
+  .pt-mtop{display:block;font-size:13px;line-height:1.45;color:var(--c-ink-3);}
+  .pt-card{background:transparent;border-radius:0;overflow:visible;gap:16px;}
+  .pt-head{padding:0;border:0;flex-direction:column;align-items:flex-start;gap:10px;}
+  .pt-head__t{flex-direction:column-reverse;align-items:flex-start;gap:10px;}
+  .pt-h1{font-size:28px;line-height:1.15;}
+  .pt-medition.m-only{display:block !important;font-size:14px;color:var(--c-ink-2);}
+  .pt-plaque{margin:0;}
+  .pt-body{padding:0;gap:16px;}
+  .pt-text{background:#FFFFFF;border-radius:var(--r-card);padding:20px 18px;display:flex;flex-direction:column;gap:10px;}
+  .norm{font-size:18px;}
+  .norm--17,.norm--16{font-size:16px;}
+  .pt-meta{display:none;}
+  .pt-cite{background:#FFFFFF;border-radius:var(--r-card);padding:14px 16px;gap:10px;}
+  .citebox{flex-direction:column;align-items:stretch;padding:0;background:transparent;box-shadow:none;gap:10px;}
+  .citebox .btn{height:48px;width:100%;font-size:15px;}
+  .pt-mfacts{display:flex;flex-direction:column;background:#FFFFFF;border-radius:var(--r-card);}
+  .pt-mfacts__r{min-height:52px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 16px;border-bottom:1px solid var(--c-line);}
+  .pt-mfacts__r:last-child{border-bottom:0;}
+  .pt-mfacts__r span{font-size:13px;color:var(--c-ink-3);flex:none;}
+  .pt-mfacts__r a{font-size:14px;font-weight:600;text-align:right;}
+  .pt-mfacts:empty{display:none;}
+  .pt-mnav{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .pt-mnav a{height:48px;border-radius:var(--r-ctl);background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;}
+  .src-diff__grid{grid-template-columns:1fr;}
+  /* таблицы 7c */
+  .tbl-scroll{margin:0 -2px;position:relative;}
+  .tbl-norm th,.tbl-norm td{padding:10px;font-size:14px;line-height:1.4;}
+  .tbl-norm th{font-size:11px;}
+  .tbl-norm tr>*:first-child{position:sticky;left:0;z-index:1;box-shadow:1px 0 0 var(--c-line);}
+  .tbl-norm tr>th:first-child{background:var(--c-surface-2);}
+  .tbl-norm tr>td:first-child{background:#FFFFFF;}
+  .tbl-norm tr.find-row>td:first-child{background:var(--c-find-row);}
+  .tbl-norm{min-width:max(560px,var(--tbl-min,0px));}
+  /* документ */
+  .doc-h1{font-size:28px;line-height:1.15;}
+  .doc-title{flex-direction:column;align-items:flex-start;gap:12px;}
+  .citebox--doc{background:var(--c-surface-2);padding:12px;box-shadow:inset 0 0 0 1px var(--c-line);}
+  .passport,.passport--3{grid-template-columns:1fr 1fr;}
+  .passport__c{border-left:0;padding:10px 12px 10px 0;}
+  .doc-grid{display:flex;flex-direction:column;gap:16px;padding-bottom:0;}
+  .doc-sec{padding:18px 16px;}
+  .du{grid-template-columns:1fr;gap:8px;}
+  .doc-link-panel{flex-direction:column;align-items:stretch;padding:20px 16px;}
+  .doc-link-panel .btn{width:100%;white-space:normal;height:auto;min-height:48px;padding:10px 16px;}
+  .doc-pair,.fnd-two,.ab-nums,.stg-key,.stg-minis,.frm-grid,.frm-grid--2{grid-template-columns:1fr;}
+  .doc-card{padding:18px 16px;}
+  /* каталог */
+  .cat-tiles{grid-template-columns:1fr 1fr;}
+  .cat-box__h{flex-direction:column;align-items:stretch;padding:14px 16px;}
+  .cat-box__tools{flex-wrap:wrap;}
+  .cat-box__tools .input{width:100%;}
+  .cat-cols{display:none;}
+  .cat-row{grid-template-columns:1fr;gap:4px;padding:12px 16px;}
+  .cat-row>span:last-child{display:flex;}
+  /* этап */
+  .stg-tabs{display:flex;overflow-x:auto;}
+  .stg-tab{min-width:150px;}
+  .stg-row,.stg-open{grid-template-columns:80px minmax(0,1fr);}
+  .stg-row__t{display:none;}
+  .stg-open__c{grid-column:2;text-align:left;}
+  .stg-bridge{flex-direction:column;align-items:flex-start;}
+  /* изменения, находки, о библиотеке */
+  .chg-item{grid-template-columns:1fr;gap:8px;}
+  .chg-item__a{align-items:flex-start;}
+  .cal-item{grid-template-columns:68px minmax(0,1fr);gap:14px;}
+  .fnd-h1{font-size:28px;}
+  .ab-sec{grid-template-columns:1fr;gap:10px;}
+  .ab-right{grid-template-columns:56px minmax(0,1fr);}
+  .ab-right .badge{grid-column:2;justify-self:start;}
+  .ab-report{flex-direction:column;align-items:stretch;}
+  .btn--primary{min-height:40px;}
+}

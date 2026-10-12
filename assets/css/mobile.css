@@ -1,0 +1,106 @@
+/* Телефон 390 (макеты 7a–7d) — точная подгонка, Строитель 2. Грузится последним (после responsive.css).
+   Общие правила: шапка 56 px, иконки 44×44, поля 16 px, карточки во всю ширину, кнопки 48 px, без горизонтальной
+   прокрутки страницы. */
+.tbl-mtop,.tbl-mfoot{display:none;}
+
+@media screen and (max-width:760px){
+  html,body{overflow-x:hidden;}
+  .hdr-m{height:56px;}
+
+  /* ── 7a главная ── */
+  .home-hero{gap:24px;padding:24px 16px 0;}
+  .home-hero__lead{margin-top:-14px;line-height:1.5;}
+  .home-hero .search-big{height:52px;border:1px solid var(--c-line-ctl);border-radius:10px;padding:0 14px;gap:10px;}
+  .home-hero .search-big .loupe{width:14px;height:14px;border-color:var(--c-ink-3);}
+  .home-hero .search-big button{display:none;}
+  .home-mchips .chip{color:var(--c-ink);font-weight:600;}
+  .home-msections.m-only{margin:24px 16px 0;}
+  .home-msections a{padding:0 16px;}
+  .home-mfeed.m-only{margin:24px 16px 0;}
+
+  /* ── 7b пункт: бейджи строкой над заголовком ── */
+  .pt-head__t{flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px;}
+  .pt-head__t .pt-h1{order:2;flex-basis:100%;margin-top:2px;}
+  .pt-mtop{padding-top:0;}
+  .pt-cite .cap{margin-bottom:-2px;}
+  .pt-cite .citebox__t{font-size:15px;}
+  .pt-mnav a{box-shadow:none;}
+
+  /* ── 7c таблица: прокрутка внутри, первая колонка закреплена, градиент и «листайте →» ── */
+  .tbl-mtop{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:13px;color:var(--c-ink-2);margin-bottom:-2px;}
+  .tbl-mtop__t{min-width:0;}
+  .tbl-mtop__go{display:none;font-weight:700;color:var(--c-accent);flex:none;margin-left:auto;}
+  .tbl-mtop.is-wide .tbl-mtop__go{display:inline;}
+  .tbl-mwrap{position:relative;}
+  .tbl-mwrap.is-wide:not(.is-end)::after{content:"";position:absolute;top:1px;right:1px;bottom:1px;width:28px;border-radius:0 var(--r-table) var(--r-table) 0;background:linear-gradient(to left,rgba(10,31,78,0.12),rgba(10,31,78,0));pointer-events:none;}
+  .tbl-scroll.is-frag tr[data-m-hide]{display:none;}
+  /* таблица в 1–2 колонки (название | код) помещается в экран: без прокрутки и закрепления */
+  .tbl-norm--c1,.tbl-norm--c2{min-width:0;}
+  .tbl-norm--c1 tr>*:first-child,.tbl-norm--c2 tr>*:first-child{position:static;box-shadow:none;font-family:var(--f-norm);font-weight:400;color:var(--c-ink);}
+  .tbl-norm--c2 col:last-child{width:96px !important;}
+  .tbl-norm .num--find{white-space:normal;}
+  .tbl-norm .num--find .find-tag{display:block;}
+  .tbl-norm .num--find span{margin-left:0;}
+  .tbl-norm:not(.tbl-norm--c1):not(.tbl-norm--c2) td:first-child{font-family:var(--f-ui);font-weight:700;color:var(--c-title);}
+  .tbl-mfoot{display:flex;flex-direction:column;gap:12px;}
+  .tbl-mfoot__x{font-size:13px;line-height:1.45;color:var(--c-ink-2);}
+  .tbl-mfoot__b{font-weight:700;}
+  .pt-text .tbl-more{flex-direction:column;align-items:stretch;gap:12px;font-size:13px;}
+  .pt-text .tbl-more a{height:48px;border:1px solid var(--c-line-ctl);border-radius:var(--r-ctl);display:flex;align-items:center;justify-content:center;background:#FFFFFF;color:var(--c-ink);font-size:15px;font-weight:700;}
+
+  /* ── поиск (5b/5c на телефоне) ── */
+  .srch,.srch[data-state]{max-width:none;padding:16px 16px 0;gap:16px;}
+  .srch-box{height:52px;border-radius:10px;box-shadow:inset 0 0 0 1.5px var(--c-accent);padding:0 6px 0 14px;gap:10px;}
+  .srch-box__ring{width:14px;height:14px;}
+  .srch-box input{font-size:16px;}
+  .srch-box button{height:40px;padding:0 14px;font-size:14px;}
+  .srch-grid{display:flex;flex-direction:column;gap:16px;}
+  .srch-filters{gap:12px;background:#FFFFFF;border-radius:var(--r-card);padding:14px 16px;}
+  .srch-fg{gap:8px;}
+  .srch-fg__list{flex-direction:row;flex-wrap:wrap;gap:8px 16px;}
+  .srch-f{min-height:32px;}
+  .srch-chip{min-height:36px;}
+  .srch-main{padding-top:12px;min-height:44px;}
+  .srch-side{display:flex;flex-direction:column;gap:12px;}
+  .sr-card{padding:14px 16px;}
+  .sr-card__h{flex-direction:column-reverse;align-items:flex-start;gap:6px;}
+  .sr-card__c b{font-size:17px;}
+  .sr-card__x{font-size:15px;}
+  .srch-miss{padding:20px 16px;gap:14px;}
+  .srch-miss__t{font-size:20px;}
+  .srch-mchip{min-height:44px;display:inline-flex;align-items:center;}
+  .srch-pair{grid-template-columns:1fr;gap:12px;}
+  .srch-more{min-height:48px;}
+
+  /* ── 7d «Проверь ссылки» ── */
+  .ck.wrap{gap:16px;}
+  .ck .page-h1{font-size:28px;line-height:1.15;letter-spacing:-0.02em;}
+  .ck-tiles.m-only{display:grid !important;}
+  .ck-tiles[hidden]{display:none !important;}
+  .ck-grid{display:flex;flex-direction:column;gap:16px;}
+  .ck-side{order:-1;gap:16px;}
+  .ck-side>.cap{display:none !important;}
+  .ck-c{padding:14px 16px;}
+  .ck-c__h{gap:8px;}
+  .ck-main{gap:8px;}
+  .ck-tcap.m-only{display:block !important;margin-bottom:0;}
+  .ck[data-state="edit"] .ck-tcap{display:none !important;}
+  .ck-card__h{padding:10px 16px;}
+  .ck[data-state="result"] .ck-sum{display:none;}
+  .ck[data-state="result"] .ck-card__h{justify-content:flex-end;border-bottom:0;padding-bottom:0;}
+  .ck-text{padding:16px;font-size:16px;line-height:1.85;min-height:220px;}
+  .ck-marked{padding:16px;font-size:16px;line-height:1.85;}
+  .ck-btns{flex-direction:column;gap:8px;margin-top:8px;}
+  .ck-btn,.ck-btn.btn--primary{height:48px;width:100%;font-size:15px;font-weight:700;}
+  .ck-private{align-items:flex-start;font-size:13px;line-height:1.45;gap:8px;}
+  .ck-private span{margin-top:5px;}
+  .ck-sug{flex-direction:row;flex-wrap:wrap;gap:8px;}
+  .ck-sug__r{flex-direction:column;align-items:stretch;gap:6px;}
+  .ck-sug__r a{height:44px;padding:0 14px;border-radius:var(--r-ctl);box-shadow:var(--sh-ring);display:flex;align-items:center;font-size:14px;font-weight:700;}
+  .ck-sug__r button{height:36px;}
+  .ck-link{font-weight:700;}
+  .ck-oklist{padding:4px 16px;}
+  .ck[data-state="result"] .ck-oklist{display:none !important;}
+  .ck[data-state="result"] [data-ck-clear]{display:none;}
+  .ck-ok{min-height:44px;align-items:center;}
+}

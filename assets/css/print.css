@@ -1,0 +1,127 @@
+/* Печать A4 (макеты 8e — пункт, 8f — документ; требования PO §15 — любая страница сайта).
+   Подключается с media="print". Сетки экрана (responsive.css, mobile.css) действуют только на screen, поэтому
+   здесь — раскладка «одна колонка» поверх десктопной. Колонтитул каждого листа: низ — оговорка и «N / M»,
+   верх — бренд, «к чему относится» и даты (содержимое — <style data-print-page> в base.html; на первом листе
+   вместо него шапка в разметке .pr-top). */
+@page{size:A4;margin:18mm 17mm 18mm;
+  @top-left{font-family:"Manrope",sans-serif;font-size:7.5pt;color:#4A5874;vertical-align:bottom;padding-bottom:3mm;border-bottom:0.75pt solid #C9D1DE;}
+  @top-right{font-family:"Manrope",sans-serif;font-size:7.5pt;color:#4A5874;vertical-align:bottom;padding-bottom:3mm;border-bottom:0.75pt solid #C9D1DE;white-space:nowrap;}
+  @bottom-left{content:"Сайт не заменяет официальную публикацию. Источник указан на странице.";font-family:"Manrope",sans-serif;font-size:7.5pt;color:#4A5874;vertical-align:top;padding-top:3mm;border-top:0.75pt solid #C9D1DE;}
+  @bottom-right{content:counter(page) " / " counter(pages);font-family:"Manrope",sans-serif;font-size:7.5pt;color:#4A5874;vertical-align:top;padding-top:3mm;border-top:0.75pt solid #C9D1DE;}
+}
+html,body{background:#FFFFFF !important;}
+body{display:block;min-height:0;font-size:10pt;color:#13254A;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+*{box-shadow:none !important;}
+
+/* ── §15.1: на бумаге нет навигации, шапки сайта, вкладок, фильтров, кнопок, чипов, «Подробнее →», «Ещё N» ── */
+nav,form,select,.hdr,.hdr-m,.nav-drawer,.ftr,.skip,.toast,.toc,.pt-aside,.doc-aside,.crumbs,.pt-nb,.pt-head__b,.pt-mfacts,
+.pt-mnav,.pt-mtop,.pt-cite,.cite-formats,.citebox,.du__a,.doc-find,.doc-nav,.no-print,.btn,.linkbtn,.toggle,.sort-btn,.pt-medition,
+.src-diff__f a,.src-card__a,.part-link,.d-only.hdr,.chip,.home-chips,.home-mchips,.home-entries,.home-msections,.search-big,
+.home-fresh__h a,.home-band a,.cal-card__a,.find-card__a,.chg-cal__a,.chg-filters,.chg-tabs,.chg-item__a,.chg-tg,.chg-empty[hidden],
+.more-find,.side-bridge,.cat-tiles,.cat-other,.cat-box__tools,.cat-more,.cat-none[hidden],.stg-band,.stg-more,.stg-row__t,
+.stg-open__a,.stg-open__c,.stg-bridge,.stg-nav,.seg,.frm-card__a,.ab-report,.srch-box,.srch-filters,.srch-side,.srch-more,
+.srch-reset,.srch-main,.srch-loading,.srch-miss__chips,.srch-pair,.ck-btns,.ck-private,.ck-loading,.ck-date input,[data-ck-what],
+.doc-full__b,.back-link,.more-link,.m-only,[data-stub]{display:none !important;}
+.print-only{display:block !important;}
+/* «Ещё N» на экране прячет хвост списков — на бумаге список целиком */
+[data-more-item][hidden]{display:block !important;}
+
+/* §15.2: ссылки в тексте — обычный текст того же цвета, без подчёркивания и жирного */
+a{color:inherit !important;text-decoration:none !important;}
+.norm a,.pt-text a,.pt-heading a,.norm-head a,.tbl-norm a,.prd a,.src-card a,.side__x a,.fnd-card a{font-weight:inherit !important;}
+
+/* шапка первого листа (у пункта и печати документа — своя, у остальных страниц — из base.html) */
+.pr-top{display:flex !important;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1.5px solid #0A1F4E;margin-bottom:16px;}
+.pr-top__l{display:flex;align-items:center;gap:8px;font-size:13px;color:#0A1F4E;}
+.pr-top__r{font-size:11px;color:#4A5874;}
+.pr-crumb{margin-bottom:16px;font-size:11px;color:#4A5874;}
+
+/* ── раскладка: одна колонка во всю ширину листа ── */
+main{display:block;}
+.wrap,.wrap--960,.wrap--880,.wrap--1312,.srch,.stg-wrap,.doc-band__in,.doc-grid,.pt-grid{max-width:none !important;width:auto !important;margin:0 !important;padding:0 !important;}
+.wrap,.stg-wrap{gap:16px;}
+.doc-grid,.pt-grid,.chg-grid,.srch-grid,.ck-grid,.home-fresh__grid{display:block !important;}
+.doc-band{background:none !important;padding:0 !important;}
+.page-h1,.doc-h1{font-size:26px !important;line-height:1.15 !important;}
+.home-hero{margin:0;padding:0;background:none;align-items:flex-start;gap:8px;}
+.home-hero h1{font-size:26px;text-align:left;}
+.home-hero__lead{text-align:left;font-size:13px;}
+.home-fresh{padding:16px 0 0;}
+.home-band{margin:16px 0 0;padding:0;background:none;display:block;}
+.home-band__c{margin-bottom:8px;}
+.feed-box{border:0;padding:0;}
+.cal-card,.find-card,.chg-cal,.chg-finds{margin-top:12px;border:1px solid #C9D1DE;border-radius:6px;background:#FFFFFF !important;}
+.chg-aside{margin-top:16px;}
+.chg-item,.cal-item,.fnd-li,.frm-card,.stg-kc,.ab-right,.diff-item{border:1px solid #C9D1DE;border-radius:6px;break-inside:avoid;}
+.chg-item{grid-template-columns:90px minmax(0,1fr);padding:10px 12px;}
+.cat-box{border:0;border-radius:0;overflow:visible;}
+.cat-box__h{padding:0 0 8px;}
+.cat-cols,.cat-row{grid-template-columns:110px minmax(0,1fr) 110px 120px;gap:10px;padding:6px 0;}
+.cat-cols>div:last-child,.cat-row>.tag-row{display:none !important;}
+.cat-row{break-inside:avoid;}
+.cat-row__n,.cat-row__e{display:block;-webkit-line-clamp:unset;overflow:visible;}
+.stg-head{max-width:none;}
+.stg-key,.stg-minis,.frm-grid,.frm-grid--2,.ab-nums,.fnd-two{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+.stg-row{grid-template-columns:90px minmax(0,1fr);padding:6px 0;break-inside:avoid;}
+.stg-row__p{white-space:normal;overflow:visible;}
+.ab-sec{grid-template-columns:140px minmax(0,1fr);gap:16px;}
+.srch-grid,.srch-list{display:block !important;}
+.ck-text{border:1px solid #C9D1DE;}
+
+/* паспорт документа: три колонки на листе, без вертикальных линий (S1-2) */
+.passport,.passport--3{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+.passport__c{border-left:0 !important;padding:8px 12px 8px 0 !important;}
+.doc-full__t{display:block;-webkit-line-clamp:unset;overflow:visible;font-size:12px;}
+.doc-sec__h{break-after:avoid;}
+.du{grid-template-columns:60px minmax(0,1fr);padding:8px 0;break-inside:avoid-page;}
+
+/* ── печать пункта (8e) ── */
+.pg-point .pt-grid{display:block;padding:0;}
+.pg-point .pt-main{display:block;}
+.pg-point .pt-card{display:block;background:#FFFFFF;border-radius:0;overflow:visible;}
+.pg-point .pt-head{display:flex;align-items:baseline;gap:12px;padding:0;border:0;justify-content:flex-start;}
+.pg-point .pt-head__t{gap:12px;flex-direction:row;}
+.pg-point .pt-h1{font-size:30px;letter-spacing:-0.01em;}
+.badge{padding:2px 7px !important;border-radius:4px !important;font-size:11px !important;background:transparent !important;border:1px solid currentColor;}
+.pg-point .pt-plaque{margin:16px 0 0;}
+.pg-point .pt-body{display:flex;flex-direction:column;gap:16px;padding:16px 0 0;}
+.pg-point .pt-heading{font-size:13px;line-height:1.4;}
+.norm{font-size:16px !important;line-height:1.6 !important;max-width:none !important;}
+.norm--print{font-size:14px !important;line-height:1.55 !important;}
+.norm-head{max-width:none;}
+.pt-text{display:flex;flex-direction:column;gap:10px;}
+.pt-meta{display:none !important;}
+.pr-req{display:grid !important;grid-template-columns:150px minmax(0,1fr);gap:6px 16px;padding:14px 0;border-top:1px solid #C9D1DE;border-bottom:1px solid #C9D1DE;font-size:11.5px;line-height:1.45;overflow-wrap:anywhere;}
+.pr-req .cap,.pr-rel .cap,.pr-next .cap{font-size:11px;}
+.pr-req__cite{font-family:"PT Serif",Georgia,serif;font-size:12.5px;}
+.pr-rel{display:flex !important;flex-direction:column;gap:6px;font-size:12px;line-height:1.55;}
+.pr-next{display:flex !important;flex-direction:column;gap:6px;padding-top:6px;}
+.pr-next p{font-family:"PT Serif",Georgia,serif;font-size:14px;line-height:1.55;color:#4A5874;}
+.src-diff{break-inside:avoid;padding:12px 14px;border:1px solid #DDD5F3;}
+.src-diff__t{font-size:18px;}
+.src-card{border:1px solid #C9D1DE;}
+.src-card--ok{border:2px solid #0B6B60;}
+.src-card__code{font-size:20px;}
+.pt-preview{font-size:10px;}
+
+/* ── таблицы норм: во всю ширину листа, без прокрутки; широкие — мельче шрифт, но не вся страница (S2-1) ── */
+.tbl-scroll{overflow:visible !important;border-color:#C9D1DE;--tbl-min:0px !important;}
+.tbl-norm{width:100% !important;min-width:0 !important;table-layout:auto !important;}
+.tbl-norm col{width:auto !important;}
+.tbl-norm td,.tbl-norm th{font-size:10pt !important;line-height:1.35 !important;padding:5px 8px !important;overflow-wrap:anywhere;position:static !important;}
+.tbl-norm--c4 td,.tbl-norm--c4 th,.tbl-norm--c5 td,.tbl-norm--c5 th{font-size:8.5pt !important;padding:4px 6px !important;}
+.tbl-norm--c6 td,.tbl-norm--c6 th,.tbl-norm--c7 td,.tbl-norm--c7 th,.tbl-norm--c8 td,.tbl-norm--c8 th,.tbl-norm--c9 td,.tbl-norm--c9 th{font-size:7.5pt !important;padding:3px 4px !important;}
+.tbl-norm tr{break-inside:avoid;}
+.tbl-more{display:none;}
+
+/* ── печать документа (8f) ── */
+.prd{display:flex;flex-direction:column;gap:14px;max-width:none;width:auto;margin:0;padding:0;}
+.prd__head{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+.prd__h1{font-size:26px;line-height:1.15;}
+.prd__pass{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #C9D1DE;border-bottom:1px solid #C9D1DE;margin-bottom:16px;overflow-wrap:anywhere;}
+.prd__toc{margin-bottom:16px;}
+.prd__find{border:1px solid #5B46A8;border-radius:6px;margin-bottom:16px;}
+.prd__g{break-before:auto;}
+.prd__g h2{font-size:15px;margin:10px 0 8px;break-after:avoid;}
+.prd__u{break-inside:avoid-page;margin-bottom:8px;}
+.pr-foot{display:none;}
